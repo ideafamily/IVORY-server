@@ -22,6 +22,7 @@ import AppSingleton     from './util/appsingleton';
 import Bootstrap        from './util/bootstrap';
 import Startup          from './util/startup';
 import Config           from './config/config.json';
+import mainsocket       from './util/main_socket';
 
 //  Log TAG
 var TAG = "index";
@@ -90,7 +91,8 @@ Startup().then(function () {
     var server = HTTP.createServer(app).listen(PORT);
     //var server_https = HTTPS.createServer(credentials, app).listen(PORT_SSL);
     var host = server.address().address;
-    sharedInstance.io = socket(server);
+    sharedInstance.io.sockets = socket(server);
+    mainsocket();
     sharedInstance.L.info(TAG, `HTTP Server running at: ${host}:${PORT}`);
     //sharedInstance.L.info(TAG, `HTTPS Server running at: ${host}:${PORT_SSL}`);
 });
