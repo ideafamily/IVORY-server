@@ -91,7 +91,7 @@ Startup().then(function () {
     var server = HTTP.createServer(app).listen(PORT);
     //var server_https = HTTPS.createServer(credentials, app).listen(PORT_SSL);
     var host = server.address().address;
-    sharedInstance.io.sockets = socket(server);
+    sharedInstance.io = socket(server);
     mainsocket();
     sharedInstance.L.info(TAG, `HTTP Server running at: ${host}:${PORT}`);
     //sharedInstance.L.info(TAG, `HTTPS Server running at: ${host}:${PORT_SSL}`);
