@@ -21,6 +21,7 @@ import passport         from 'passport';
 import AppSingleton     from './appsingleton';
 import fblogin          from './fblogin';
 import router           from './router';
+import randomstring     from 'randomstring';
 
 /**
  * bootstrap the entire application
@@ -54,6 +55,9 @@ function bootstrap () {
     sharedInstance.L.info(TAG, "Bootstrap complete!");
     sharedInstance.passport = passport;
     sharedInstance.app.use(sharedInstance.passport.initialize());
+    sharedInstance.key = randomstring.generate({
+    length: 32
+    });
     fblogin();
     router();
 }
