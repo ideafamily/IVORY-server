@@ -15,6 +15,7 @@
 import Winston          from 'winston';
 import Promise          from 'bluebird';
 import Path             from 'path';
+import passport         from 'passport';
 
 //  Libraries
 import AppSingleton     from './appsingleton';
@@ -49,6 +50,8 @@ function bootstrap () {
     };
 
     sharedInstance.L.info(TAG, "Bootstrap complete!");
+    sharedInstance.passport = passport;
+    sharedInstance.app.use(sharedInstance.passport.initialize());
 }
 
 module.exports = bootstrap;

@@ -14,6 +14,8 @@ import BodyParser       from 'body-parser';
 import Fs               from 'fs';
 import HTTP             from 'http';
 import HTTPS            from 'https';
+import morgan           from 'morgan';
+import socket           from 'socket.io';
 
 //  Custom library
 import AppSingleton     from './util/appsingleton';
@@ -88,6 +90,7 @@ Startup().then(function () {
     var server = HTTP.createServer(app).listen(PORT);
     //var server_https = HTTPS.createServer(credentials, app).listen(PORT_SSL);
     var host = server.address().address;
+    sharedInstance.io = socket(server);
     sharedInstance.L.info(TAG, `HTTP Server running at: ${host}:${PORT}`);
     //sharedInstance.L.info(TAG, `HTTPS Server running at: ${host}:${PORT_SSL}`);
 });
