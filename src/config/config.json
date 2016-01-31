@@ -1,0 +1,18 @@
+{
+    "production": {
+
+        "loglevel": "verbose",
+        "server": {
+            "port": 3939,
+            "port_ssl": 33939
+        }
+    },
+    "development": {
+        "loglevel": "verbose",
+        "server": {
+            "port": 3939,
+            "port_ssl": 33939
+        }
+    }
+
+}
