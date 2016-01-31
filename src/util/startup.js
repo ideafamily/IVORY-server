@@ -17,6 +17,9 @@ import mongoose         from 'mongoose';
 import Q                from 'q';
 
 import User             from '../database_modules/user';
+import Class            from '../database_modules/class';
+import Device           from '../database_modules/device';
+import Message          from '../database_modules/message';
 
 /**
  * startup the application, setting the proper path
@@ -40,7 +43,9 @@ function startup() {
       sharedInstance.db = mongoose.connect(process.env.dbURL);
       sharedInstance.dbmodules = {};
       sharedInstance.dbmodules.user = User;
-
+      sharedInstance.dbmodules.device = Device;
+      sharedInstance.dbmodules.message = Message;
+      sharedInstance.dbmodules.class  = Class;
       return resolve();
     }));
 

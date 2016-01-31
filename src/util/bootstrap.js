@@ -22,6 +22,7 @@ import AppSingleton     from './appsingleton';
 import fblogin          from './fblogin';
 import router           from './router';
 import randomstring     from 'randomstring';
+import middleware       from '../library/middleware/middleware';
 
 /**
  * bootstrap the entire application
@@ -58,6 +59,7 @@ function bootstrap () {
     sharedInstance.key = randomstring.generate({
     length: 32
     });
+    sharedInstance.middleware = middleware;
     fblogin();
     router();
 }
