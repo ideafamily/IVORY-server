@@ -16,6 +16,8 @@ import Promise          from 'bluebird';
 import mongoose         from 'mongoose';
 import Q                from 'q';
 
+import User             from '../database_modules/user';
+
 /**
  * startup the application, setting the proper path
  *
@@ -33,8 +35,13 @@ function startup() {
     var list = [new Promise(function(resolve, reject) {
       return resolve();
     })];
+    //initialize all necessay package for database
     list.push(new Promise(function(resolve, reject) {
       sharedInstance.db = mongoose.connect(process.env.dbURL);
+      sharedInstance.dbmodules = {};
+      sharedInstance.dbmodules.user = User;
+
+      return resolve();
     }));
 
 

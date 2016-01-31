@@ -19,6 +19,8 @@ import passport         from 'passport';
 
 //  Libraries
 import AppSingleton     from './appsingleton';
+import fblogin          from './fblogin';
+import router           from './router';
 
 /**
  * bootstrap the entire application
@@ -52,6 +54,8 @@ function bootstrap () {
     sharedInstance.L.info(TAG, "Bootstrap complete!");
     sharedInstance.passport = passport;
     sharedInstance.app.use(sharedInstance.passport.initialize());
+    fblogin();
+    router();
 }
 
 module.exports = bootstrap;
