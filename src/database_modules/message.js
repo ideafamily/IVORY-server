@@ -7,7 +7,8 @@ var messageSchema = mongoose.Schema({
   takerid      : String,
   message      : String,
   url          : String,
-  date         : Date
+  date         : Date,
+  group        : Number
 });
 
 module.exports = mongoose.model('Message', messageSchema);

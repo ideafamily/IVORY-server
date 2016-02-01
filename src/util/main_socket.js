@@ -5,6 +5,8 @@ import socketioJwt    from 'socketio-jwt';
 
 /*customer library*/
 import appsingleton   from './appsingleton';
+import getDateTime    from '../library/getDateTime';
+import event          from '../library/event';
 
 
 var sharedInstance = appsingleton.getInstance();
@@ -15,7 +17,17 @@ function main_socket() {
     secret: sharedInstance.key,
     timeout: 15000
   })).on('authenticated', function(socket) {
-    //console.log(socket.decoded_token);
+    sharedInstance.dbmodules.room.findOne({userid : socket.decoded_token._id},
+      function(err,room) {
+        //console.log(room);
+      socket.join('user' + room.self);
+      for(var i in room.group){
+        socket.join('group' + room.group[i]);
+      }
+      //console.log(event);
+      event(socket);
+      socket.emit('setup complet');
+    });
     sharedInstance.dbmodules.device.findOne({userid : socket.decoded_token._id},
     function(err,device) {
       if(device){
@@ -31,18 +43,6 @@ function main_socket() {
         newdevice.socket_token.push(socket.id);
         newdevice.save();
       }
-    });
-    socket.on('disconnect',function() {
-      sharedInstance.dbmodules.device.findOne({userid : socket.decoded_token._id},
-      function(err,device) {
-          if(device){
-            var index = device.socket_token.indexOf(socket.id);
-            if(index != -1){
-              device.socket_token.splice(index, 1);
-            }
-            device.save();
-          }
-      });
     });
   });
 
