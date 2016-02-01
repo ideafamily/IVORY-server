@@ -20,6 +20,7 @@ import User             from '../database_modules/user';
 import Class            from '../database_modules/class';
 import Device           from '../database_modules/device';
 import Message          from '../database_modules/message';
+import Room             from '../database_modules/room';
 
 /**
  * startup the application, setting the proper path
@@ -46,6 +47,7 @@ function startup() {
       sharedInstance.dbmodules.device = Device;
       sharedInstance.dbmodules.message = Message;
       sharedInstance.dbmodules.class  = Class;
+      sharedInstance.dbmodules.room   = Room;
       return resolve();
     }));
 

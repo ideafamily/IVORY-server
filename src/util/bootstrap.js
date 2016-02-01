@@ -23,6 +23,7 @@ import fblogin          from './fblogin';
 import router           from './router';
 import randomstring     from 'randomstring';
 import middleware       from '../library/middleware/middleware';
+import fun              from '../library/socketfun/fun';
 
 /**
  * bootstrap the entire application
@@ -60,6 +61,7 @@ function bootstrap () {
     length: 32
     });
     sharedInstance.middleware = middleware;
+    sharedInstance.socketfun  = fun;
     fblogin();
     router();
 }

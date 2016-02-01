@@ -25,7 +25,10 @@ function router() {
   var app = sharedInstance.app;
   app.get('/auth/facebook/token',sharedInstance.passport
   .authenticate('facebook-token',{ session: false }),
+  sharedInstance.middleware.makeroom,
   makeToken);
+
+  app.post('/logout', verifyToken,sharedInstance.middleware.removedeviceToken);
 }
 
  module.exports = router;
