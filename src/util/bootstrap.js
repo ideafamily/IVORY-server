@@ -20,6 +20,7 @@ import passport         from 'passport';
 //  Libraries
 import AppSingleton     from './appsingleton';
 import fblogin          from './fblogin';
+import locallogin       from './locallogin';
 import router           from './router';
 import randomstring     from 'randomstring';
 import middleware       from '../library/middleware/middleware';
@@ -63,6 +64,7 @@ function bootstrap () {
     sharedInstance.middleware = middleware;
     sharedInstance.socketfun  = fun;
     fblogin();
+    locallogin();
     router();
 }
 

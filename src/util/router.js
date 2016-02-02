@@ -23,12 +23,44 @@ function verifyToken(req,res,next) {
 
 function router() {
   var app = sharedInstance.app;
+
   app.get('/auth/facebook/token',sharedInstance.passport
   .authenticate('facebook-token',{ session: false }),
   sharedInstance.middleware.makeroom,
   makeToken);
 
+  app.post('/auth/local/register',function (req,res,next) {
+    sharedInstance.passport.authenticate('register',function(err,user,info) {
+      if(err){
+        return res.sendStatus(503);
+      }
+      if(user){
+        req.user = user;
+        return next();
+      }else {
+        return res.sendStatus(401);
+      }
+    })(req,res,next);
+  },sharedInstance.middleware.makeroom,
+  makeToken);
+
+  app.post('/auth/local/login',function(req,res,next) {
+    sharedInstance.passport.authenticate('login',function (err,user,info) {
+      if(err){
+        return res.sendStatus(503);
+      }
+      if(user){
+        req.user = user;
+        return next();
+      }else {
+        return res.sendStatus(401);
+      }
+    })(req,res,next);
+  },sharedInstance.middleware.makeroom,
+  makeToken);
   app.post('/logout', verifyToken,sharedInstance.middleware.removedeviceToken);
+
+  app.get('/class',sharedInstance.middleware.findclass);
 }
 
  module.exports = router;
