@@ -21,6 +21,8 @@ import Class            from '../database_modules/class';
 import Device           from '../database_modules/device';
 import Message          from '../database_modules/message';
 import Room             from '../database_modules/room';
+import Profile          from '../database_modules/profile';
+import Group            from '../database_modules/group';
 
 /**
  * startup the application, setting the proper path
@@ -48,6 +50,8 @@ function startup() {
       sharedInstance.dbmodules.message = Message;
       sharedInstance.dbmodules.class  = Class;
       sharedInstance.dbmodules.room   = Room;
+      sharedInstance.dbmodules.profile = Profile;
+      sharedInstance.dbmodules.group = Group;
       return resolve();
     }));
 
