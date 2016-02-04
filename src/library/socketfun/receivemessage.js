@@ -13,14 +13,14 @@ function receivemessage(socket,data) {
   newmessage.group = data.group;
   newmessage.date = getDateTime();
 
-  newmessage.save();
-
-  if(data.group === 0){
-    //console.log('user' + data.takerid);
-    sharedInstance.io.to('user' + data.takerid).emit('newmessage',data);
-  }else {
-    sharedInstance.io.to('group' + data.takerid).emit('newmessage',data);
-  }
+  newmessage.save(function(err,thismessage) {
+    if(data.group === 0){
+      //console.log('user' + data.takerid);
+      sharedInstance.io.to('user' + data.takerid).emit('newmessage',thismessage);
+    }else {
+      sharedInstance.io.to('group' + data.takerid).emit('newmessage',thismessage);
+    }
+  });
 }
 
 module.exports = receivemessage;
