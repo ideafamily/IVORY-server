@@ -26,7 +26,7 @@ function main_socket() {
       }
       //console.log(event);
       event(socket);
-      socket.emit('setup complet');
+      socket.emit('setup complete');
     });
     sharedInstance.dbmodules.device.findOne({userid : socket.decoded_token._id},
     function(err,device) {
