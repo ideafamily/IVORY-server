@@ -54,6 +54,10 @@
 * **Method:**
 
   `POST`
+
+* **Header**
+
+  None
   
 *  **URL Params**
 
@@ -93,6 +97,10 @@
 * **Method:**
 
   `get`
+
+* **Header**
+
+  None
   
 *  **URL Params**
 
