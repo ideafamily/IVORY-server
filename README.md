@@ -19,7 +19,7 @@
 
   * **event name**
     
-    authenticated
+    setup complete
   
   * **data**
   
