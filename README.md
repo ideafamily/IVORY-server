@@ -1,5 +1,7 @@
 # IVORY
 
+current host on: 162.243.88.185:3939
+
 ***socket event***
 ----
 
