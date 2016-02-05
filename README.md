@@ -186,7 +186,7 @@ current host on: 10.186.136.82:3939
 
   **Required:**
     
-    token=string
+    access_token=string
 
 * **Data Params**
 
