@@ -25,9 +25,55 @@
   
     NULL
 
+* **Error Response:**
+
+  * **event name**
+    
+    unauthorized
   
+  * **data**
+  
+    ` { message: 'invalid signature',inner: { message: 'invalid signature' },data: { message: 'invalid signature',code: 'invalid_token',type: 'UnauthorizedError' } }`
 
+**message**
+----
+  server will wait for a message. after setup
+  
+* **event name**
 
+  message
+
+* **data**
+  
+  `{{takerid : <string>,message : <string>,group : <number>(0 for user,1 for group) ,url : <string>}}`
+
+* **Success Response:**
+  
+  None
+
+* **Error Response:**
+
+  None
+
+**send message**
+----
+  child socket will receive message send by server
+ 
+ * **event name**
+
+  newmessage 
+  
+* **data**
+  
+  `{{userid : <string>, takerid : <string>,message : <string>,group : <number>(0 for user,1 for group) ,url : <string>}}`
+  
+* **Success Response:**
+  
+  None
+
+* **Error Response:**
+
+  None
 
 ***API-Table***
 ----
