@@ -1,6 +1,6 @@
 # IVORY
 
-current host on: 162.243.88.185:3939
+current host on: 10.186.136.82:3939
 
 ***socket event***
 ----
