@@ -1,0 +1,14 @@
+{
+  "apps" : [{
+    "name"    : "IVORY",
+    "script"  : "index.js",
+    "watch"   : true,
+    "cwd"     : "./lib",
+    "env"     : {
+      "dbURL" : "mongodb://admin:jane24adam@ds055415-a0.mongolab.com:55415,ds055415-a1.mongolab.com:55415/ivory?replicaSet=rs-ds055415",
+      "clientID" : "1729332400621142",
+      "clientSecret" : "f5c7a097d037e5b039618e73d1368a94",
+      "NODE_ENV"     : "development"
+    }
+    }]
+}
